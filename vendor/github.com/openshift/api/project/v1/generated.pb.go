@@ -9,6 +9,7 @@ import (
 	io "io"
 
 	proto "github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	k8s_io_api_core_v1 "k8s.io/api/core/v1"
 	v11 "k8s.io/api/core/v1"
 
@@ -57,10 +58,38 @@ func (m *Project) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Project proto.InternalMessageInfo
 
+func (m *ProjectLimitBySelector) Reset()      { *m = ProjectLimitBySelector{} }
+func (*ProjectLimitBySelector) ProtoMessage() {}
+func (*ProjectLimitBySelector) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbf46eaac05029bf, []int{1}
+}
+func (m *ProjectLimitBySelector) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ProjectLimitBySelector) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	b = b[:cap(b)]
+	n, err := m.MarshalToSizedBuffer(b)
+	if err != nil {
+		return nil, err
+	}
+	return b[:n], nil
+}
+func (m *ProjectLimitBySelector) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ProjectLimitBySelector.Merge(m, src)
+}
+func (m *ProjectLimitBySelector) XXX_Size() int {
+	return m.Size()
+}
+func (m *ProjectLimitBySelector) XXX_DiscardUnknown() {
+	xxx_messageInfo_ProjectLimitBySelector.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ProjectLimitBySelector proto.InternalMessageInfo
+
 func (m *ProjectList) Reset()      { *m = ProjectList{} }
 func (*ProjectList) ProtoMessage() {}
 func (*ProjectList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fbf46eaac05029bf, []int{1}
+	return fileDescriptor_fbf46eaac05029bf, []int{2}
 }
 func (m *ProjectList) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -88,7 +117,7 @@ var xxx_messageInfo_ProjectList proto.InternalMessageInfo
 func (m *ProjectRequest) Reset()      { *m = ProjectRequest{} }
 func (*ProjectRequest) ProtoMessage() {}
 func (*ProjectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fbf46eaac05029bf, []int{2}
+	return fileDescriptor_fbf46eaac05029bf, []int{3}
 }
 func (m *ProjectRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -113,10 +142,38 @@ func (m *ProjectRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ProjectRequest proto.InternalMessageInfo
 
+func (m *ProjectRequestLimit) Reset()      { *m = ProjectRequestLimit{} }
+func (*ProjectRequestLimit) ProtoMessage() {}
+func (*ProjectRequestLimit) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbf46eaac05029bf, []int{4}
+}
+func (m *ProjectRequestLimit) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ProjectRequestLimit) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	b = b[:cap(b)]
+	n, err := m.MarshalToSizedBuffer(b)
+	if err != nil {
+		return nil, err
+	}
+	return b[:n], nil
+}
+func (m *ProjectRequestLimit) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ProjectRequestLimit.Merge(m, src)
+}
+func (m *ProjectRequestLimit) XXX_Size() int {
+	return m.Size()
+}
+func (m *ProjectRequestLimit) XXX_DiscardUnknown() {
+	xxx_messageInfo_ProjectRequestLimit.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ProjectRequestLimit proto.InternalMessageInfo
+
 func (m *ProjectSpec) Reset()      { *m = ProjectSpec{} }
 func (*ProjectSpec) ProtoMessage() {}
 func (*ProjectSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fbf46eaac05029bf, []int{3}
+	return fileDescriptor_fbf46eaac05029bf, []int{5}
 }
 func (m *ProjectSpec) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -144,7 +201,7 @@ var xxx_messageInfo_ProjectSpec proto.InternalMessageInfo
 func (m *ProjectStatus) Reset()      { *m = ProjectStatus{} }
 func (*ProjectStatus) ProtoMessage() {}
 func (*ProjectStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fbf46eaac05029bf, []int{4}
+	return fileDescriptor_fbf46eaac05029bf, []int{6}
 }
 func (m *ProjectStatus) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -171,8 +228,11 @@ var xxx_messageInfo_ProjectStatus proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*Project)(nil), "github.com.openshift.api.project.v1.Project")
+	proto.RegisterType((*ProjectLimitBySelector)(nil), "github.com.openshift.api.project.v1.ProjectLimitBySelector")
+	proto.RegisterMapType((map[string]string)(nil), "github.com.openshift.api.project.v1.ProjectLimitBySelector.SelectorEntry")
 	proto.RegisterType((*ProjectList)(nil), "github.com.openshift.api.project.v1.ProjectList")
 	proto.RegisterType((*ProjectRequest)(nil), "github.com.openshift.api.project.v1.ProjectRequest")
+	proto.RegisterType((*ProjectRequestLimit)(nil), "github.com.openshift.api.project.v1.ProjectRequestLimit")
 	proto.RegisterType((*ProjectSpec)(nil), "github.com.openshift.api.project.v1.ProjectSpec")
 	proto.RegisterType((*ProjectStatus)(nil), "github.com.openshift.api.project.v1.ProjectStatus")
 }
@@ -182,43 +242,56 @@ func init() {
 }
 
 var fileDescriptor_fbf46eaac05029bf = []byte{
-	// 570 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x93, 0x3d, 0x8f, 0xd3, 0x30,
-	0x18, 0xc7, 0x9b, 0xf6, 0x7a, 0x5c, 0x5d, 0xee, 0x84, 0xc2, 0x52, 0x75, 0x48, 0x4b, 0x90, 0x50,
-	0x07, 0x70, 0x68, 0x79, 0x11, 0x73, 0x40, 0x08, 0x24, 0x5e, 0x0e, 0xb3, 0x55, 0x0c, 0xb8, 0xa9,
-	0x9b, 0x9a, 0x5e, 0x62, 0x13, 0xbb, 0x95, 0x8e, 0x89, 0x8f, 0xc0, 0xce, 0xe7, 0x60, 0x65, 0xee,
-	0x78, 0xe3, 0x4d, 0xd5, 0x35, 0x7c, 0x8b, 0x9b, 0x90, 0x1d, 0x37, 0x09, 0x5c, 0x91, 0xee, 0x16,
-	0xb6, 0xfa, 0xc9, 0xff, 0xf7, 0xb3, 0xfd, 0x3c, 0x2e, 0x78, 0x10, 0x52, 0x39, 0x9d, 0x8f, 0x60,
-	0xc0, 0x22, 0x8f, 0x71, 0x12, 0x8b, 0x29, 0x9d, 0x48, 0x0f, 0x73, 0xea, 0xf1, 0x84, 0x7d, 0x22,
-	0x81, 0xf4, 0x16, 0x7d, 0x2f, 0x24, 0x31, 0x49, 0xb0, 0x24, 0x63, 0xc8, 0x13, 0x26, 0x99, 0x7d,
-	0xbb, 0x80, 0x60, 0x0e, 0x41, 0xcc, 0x29, 0x34, 0x10, 0x5c, 0xf4, 0xdb, 0xf7, 0x4a, 0xe6, 0x90,
-	0x85, 0xcc, 0xd3, 0xec, 0x68, 0x3e, 0xd1, 0x2b, 0xbd, 0xd0, 0xbf, 0x32, 0x67, 0xdb, 0x9d, 0x3d,
-	0x11, 0x90, 0x32, 0xbd, 0x75, 0xc0, 0x12, 0xb2, 0x65, 0xdf, 0xf6, 0xc3, 0x22, 0x13, 0xe1, 0x60,
-	0x4a, 0x63, 0x92, 0x1c, 0x7b, 0x7c, 0x16, 0xaa, 0x82, 0xf0, 0x22, 0x22, 0xf1, 0x36, 0xea, 0xf1,
-	0xbf, 0xa8, 0x64, 0x1e, 0x4b, 0x1a, 0x11, 0x4f, 0x04, 0x53, 0x12, 0xe1, 0xbf, 0x39, 0xf7, 0x7b,
-	0x15, 0x5c, 0x3b, 0xcc, 0xee, 0x63, 0x7f, 0x04, 0x7b, 0x4a, 0x3f, 0xc6, 0x12, 0xb7, 0xac, 0xae,
-	0xd5, 0x6b, 0x0e, 0xee, 0xc3, 0x4c, 0x0b, 0xcb, 0x5a, 0xc8, 0x67, 0xa1, 0x2a, 0x08, 0xa8, 0xd2,
-	0x70, 0xd1, 0x87, 0x6f, 0x47, 0x8a, 0x7f, 0x4d, 0x24, 0xf6, 0xed, 0xe5, 0xaa, 0x53, 0x49, 0x57,
-	0x1d, 0x50, 0xd4, 0x50, 0x6e, 0xb5, 0x11, 0xd8, 0x11, 0x9c, 0x04, 0xad, 0xaa, 0xb1, 0x5f, 0xa2,
-	0xc5, 0xd0, 0x9c, 0xee, 0x3d, 0x27, 0x81, 0x7f, 0xdd, 0xd8, 0x77, 0xd4, 0x0a, 0x69, 0x97, 0x3d,
-	0x04, 0xbb, 0x42, 0x62, 0x39, 0x17, 0xad, 0x9a, 0xb6, 0x0e, 0xae, 0x64, 0xd5, 0xa4, 0x7f, 0x60,
-	0xbc, 0xbb, 0xd9, 0x1a, 0x19, 0xa3, 0xfb, 0xd3, 0x02, 0x4d, 0x93, 0x7c, 0x45, 0x85, 0xb4, 0x3f,
-	0x5c, 0xe8, 0x10, 0xbc, 0x5c, 0x87, 0x14, 0xad, 0xfb, 0x73, 0xc3, 0xec, 0xb4, 0xb7, 0xa9, 0x94,
-	0xba, 0xf3, 0x0e, 0xd4, 0xa9, 0x24, 0x91, 0x68, 0x55, 0xbb, 0xb5, 0x5e, 0x73, 0x70, 0xf7, 0x2a,
-	0x17, 0xf1, 0xf7, 0x8d, 0xb8, 0xfe, 0x52, 0x29, 0x50, 0x66, 0x72, 0xcf, 0x2c, 0x70, 0x60, 0x12,
-	0x88, 0x7c, 0x9e, 0x13, 0xf1, 0x3f, 0xa6, 0xfc, 0x08, 0x34, 0xc7, 0x54, 0xf0, 0x23, 0x7c, 0xfc,
-	0x06, 0x47, 0x44, 0x0f, 0xbb, 0xe1, 0xdf, 0x34, 0x48, 0xf3, 0x59, 0xf1, 0x09, 0x95, 0x73, 0x1a,
-	0x23, 0x22, 0x48, 0x28, 0x97, 0x94, 0xc5, 0x7a, 0x9a, 0x65, 0xac, 0xf8, 0x84, 0xca, 0x39, 0x17,
-	0xe7, 0x23, 0x52, 0x8f, 0xc2, 0x46, 0x00, 0x4c, 0x68, 0x8c, 0x8f, 0xe8, 0x17, 0x92, 0x88, 0x96,
-	0xd5, 0xad, 0xf5, 0x1a, 0xfe, 0x40, 0x1d, 0xf5, 0x79, 0x5e, 0x3d, 0x5f, 0x75, 0xba, 0x17, 0xff,
-	0x88, 0x30, 0x0f, 0xe8, 0xa3, 0x95, 0x2c, 0xee, 0x0f, 0x0b, 0xec, 0xff, 0xf1, 0x60, 0xec, 0x17,
-	0xa0, 0xce, 0xa7, 0x58, 0x10, 0xdd, 0xc1, 0x86, 0x3f, 0xd8, 0x34, 0xff, 0x50, 0x15, 0xcf, 0x57,
-	0x9d, 0x5b, 0x5b, 0xfc, 0x4a, 0x2b, 0x38, 0x0e, 0x88, 0x0e, 0xa1, 0x4c, 0x60, 0x0f, 0x01, 0x08,
-	0x58, 0x3c, 0xa6, 0xea, 0x2e, 0x9b, 0xc9, 0xdf, 0x29, 0x0d, 0x04, 0x2a, 0x1c, 0x96, 0xf1, 0xa7,
-	0x9b, 0x78, 0x31, 0x86, 0xbc, 0x24, 0x50, 0xc9, 0xe6, 0xf7, 0x96, 0x6b, 0xa7, 0x72, 0xb2, 0x76,
-	0x2a, 0xa7, 0x6b, 0xa7, 0xf2, 0x35, 0x75, 0xac, 0x65, 0xea, 0x58, 0x27, 0xa9, 0x63, 0x9d, 0xa6,
-	0x8e, 0x75, 0x96, 0x3a, 0xd6, 0xb7, 0x5f, 0x4e, 0x65, 0x58, 0x5d, 0xf4, 0x7f, 0x07, 0x00, 0x00,
-	0xff, 0xff, 0x0a, 0xd0, 0xf2, 0xe0, 0x22, 0x05, 0x00, 0x00,
+	// 769 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x95, 0x4d, 0x6f, 0xd3, 0x3e,
+	0x1c, 0xc7, 0x9b, 0x76, 0xdd, 0x7f, 0x73, 0xff, 0x1b, 0x53, 0x86, 0x50, 0x57, 0x69, 0xe9, 0x16,
+	0x24, 0xb4, 0x03, 0x38, 0xb4, 0x3c, 0x68, 0x62, 0x27, 0x02, 0x4c, 0x4c, 0xa2, 0x30, 0x3c, 0x71,
+	0x19, 0x1c, 0xf0, 0x52, 0xaf, 0x35, 0x6d, 0x1e, 0x88, 0xdd, 0x42, 0x39, 0xc1, 0x3b, 0xe0, 0xce,
+	0x8d, 0xf7, 0xc0, 0x95, 0xf3, 0x8e, 0x3b, 0xee, 0x54, 0x6d, 0xe1, 0x5d, 0xec, 0x84, 0xec, 0xb8,
+	0x49, 0xf6, 0xa8, 0x4d, 0x48, 0xbb, 0xd9, 0x3f, 0x7f, 0xbf, 0x1f, 0xc7, 0xce, 0xf7, 0x97, 0x80,
+	0x7b, 0x2d, 0xca, 0xdb, 0xbd, 0x2d, 0xe8, 0xf8, 0xae, 0xe5, 0x07, 0xc4, 0x63, 0x6d, 0xba, 0xcd,
+	0x2d, 0x1c, 0x50, 0x2b, 0x08, 0xfd, 0x0f, 0xc4, 0xe1, 0x56, 0xbf, 0x66, 0xb5, 0x88, 0x47, 0x42,
+	0xcc, 0x49, 0x13, 0x06, 0xa1, 0xcf, 0x7d, 0xfd, 0x66, 0x6a, 0x82, 0x89, 0x09, 0xe2, 0x80, 0x42,
+	0x65, 0x82, 0xfd, 0x5a, 0xe5, 0x4e, 0x86, 0xdc, 0xf2, 0x5b, 0xbe, 0x25, 0xbd, 0x5b, 0xbd, 0x6d,
+	0x39, 0x93, 0x13, 0x39, 0x8a, 0x99, 0x15, 0xb3, 0xb3, 0xcc, 0x20, 0xf5, 0xe5, 0xd6, 0x8e, 0x1f,
+	0x92, 0x53, 0xf6, 0xad, 0xdc, 0x4f, 0x35, 0x2e, 0x76, 0xda, 0xd4, 0x23, 0xe1, 0xc0, 0x0a, 0x3a,
+	0x2d, 0x51, 0x60, 0x96, 0x4b, 0x38, 0x3e, 0xcd, 0xf5, 0xf0, 0x2c, 0x57, 0xd8, 0xf3, 0x38, 0x75,
+	0x89, 0xc5, 0x9c, 0x36, 0x71, 0xf1, 0x71, 0x9f, 0xf9, 0x23, 0x0f, 0xfe, 0x5b, 0x8f, 0xcf, 0xa3,
+	0xbf, 0x07, 0x13, 0x02, 0xdf, 0xc4, 0x1c, 0x97, 0xb5, 0x05, 0x6d, 0xa9, 0x54, 0xbf, 0x0b, 0x63,
+	0x2c, 0xcc, 0x62, 0x61, 0xd0, 0x69, 0x89, 0x02, 0x83, 0x42, 0x0d, 0xfb, 0x35, 0xf8, 0x6a, 0x4b,
+	0xf8, 0x1b, 0x84, 0x63, 0x5b, 0xdf, 0x19, 0x56, 0x73, 0xd1, 0xb0, 0x0a, 0xd2, 0x1a, 0x4a, 0xa8,
+	0x3a, 0x02, 0x63, 0x2c, 0x20, 0x4e, 0x39, 0xaf, 0xe8, 0x17, 0xb8, 0x62, 0xa8, 0x9e, 0x6e, 0x23,
+	0x20, 0x8e, 0xfd, 0xbf, 0xa2, 0x8f, 0x89, 0x19, 0x92, 0x2c, 0x7d, 0x13, 0x8c, 0x33, 0x8e, 0x79,
+	0x8f, 0x95, 0x0b, 0x92, 0x5a, 0xbf, 0x14, 0x55, 0x3a, 0xed, 0x69, 0xc5, 0x1d, 0x8f, 0xe7, 0x48,
+	0x11, 0xcd, 0x6f, 0x79, 0x70, 0x43, 0x29, 0x5f, 0x50, 0x97, 0x72, 0x7b, 0xb0, 0x41, 0xba, 0xc4,
+	0xe1, 0x7e, 0xa8, 0x7f, 0x02, 0x13, 0x4c, 0x8d, 0xcb, 0xda, 0x42, 0x61, 0xa9, 0x54, 0x5f, 0xbb,
+	0xcc, 0xc6, 0xc7, 0x70, 0x70, 0x34, 0x78, 0xe6, 0xf1, 0x70, 0x60, 0xcf, 0xa8, 0xe7, 0x99, 0x18,
+	0x95, 0x51, 0xb2, 0x99, 0x5e, 0x03, 0x25, 0x17, 0x7f, 0x56, 0x18, 0x26, 0xaf, 0xb2, 0x60, 0x5f,
+	0x8b, 0x86, 0xd5, 0x52, 0x23, 0x2d, 0xa3, 0xac, 0xa6, 0xb2, 0x02, 0xa6, 0x8e, 0xf0, 0xf5, 0x19,
+	0x50, 0xe8, 0x90, 0x81, 0x7c, 0xc9, 0x93, 0x48, 0x0c, 0xf5, 0xeb, 0xa0, 0xd8, 0xc7, 0xdd, 0x1e,
+	0x91, 0xbc, 0x49, 0x14, 0x4f, 0x1e, 0xe5, 0x97, 0x35, 0xf3, 0xb7, 0x06, 0x4a, 0xc9, 0x43, 0x33,
+	0xae, 0xbf, 0x3b, 0x91, 0x12, 0x78, 0xb1, 0x94, 0x08, 0xb7, 0xcc, 0x48, 0x72, 0xba, 0x51, 0x25,
+	0x93, 0x90, 0xd7, 0xa0, 0x48, 0x39, 0x71, 0xc5, 0xb9, 0xc4, 0x9d, 0xde, 0xbe, 0xcc, 0x9d, 0xda,
+	0x53, 0x0a, 0x5c, 0x5c, 0x13, 0x08, 0x14, 0x93, 0xcc, 0x7d, 0x0d, 0x4c, 0x2b, 0x05, 0x22, 0x1f,
+	0x7b, 0x84, 0x5d, 0x45, 0xd2, 0x1f, 0x80, 0x52, 0x93, 0xb2, 0xa0, 0x8b, 0x07, 0x2f, 0xb1, 0xab,
+	0x6e, 0xd5, 0x9e, 0x55, 0x96, 0xd2, 0xd3, 0x74, 0x09, 0x65, 0x75, 0xd2, 0x46, 0x98, 0x13, 0xd2,
+	0x80, 0x53, 0xdf, 0x93, 0x89, 0xce, 0xda, 0xd2, 0x25, 0x94, 0xd5, 0x99, 0x3f, 0x0b, 0x60, 0xf6,
+	0xe8, 0x11, 0x65, 0xbe, 0xae, 0xe0, 0x9c, 0x0e, 0x18, 0xef, 0x8a, 0xad, 0x46, 0x2f, 0x6c, 0xe5,
+	0x1f, 0x9a, 0x20, 0x6d, 0x43, 0xb9, 0xc0, 0x90, 0x42, 0xeb, 0x6f, 0xc1, 0x5c, 0x26, 0xce, 0xab,
+	0x7e, 0xb8, 0x31, 0x60, 0x9c, 0xb8, 0x6f, 0x18, 0x09, 0xe3, 0xae, 0x2f, 0xd8, 0xf3, 0xd1, 0xb0,
+	0x3a, 0xd7, 0x38, 0x4b, 0x84, 0xce, 0xf6, 0xeb, 0x2d, 0x30, 0x7f, 0x6c, 0x91, 0x84, 0x7d, 0xea,
+	0x90, 0xc7, 0x8e, 0xe3, 0xf7, 0x3c, 0xce, 0xca, 0x63, 0x72, 0x83, 0xc5, 0x68, 0x58, 0x9d, 0x6f,
+	0x9c, 0x27, 0x44, 0xe7, 0x73, 0x4c, 0x9c, 0xf4, 0x91, 0xf8, 0x7a, 0xe9, 0x08, 0x80, 0x6d, 0xea,
+	0xe1, 0x2e, 0xfd, 0x22, 0x4e, 0x21, 0x3e, 0x21, 0x93, 0x76, 0x5d, 0xdc, 0xf3, 0x6a, 0x52, 0x3d,
+	0x1c, 0x56, 0x17, 0x4e, 0xfe, 0x31, 0x60, 0x22, 0x90, 0xf9, 0xc9, 0x50, 0xcc, 0x5f, 0x1a, 0x98,
+	0x3a, 0xf2, 0x65, 0xd3, 0x9f, 0x83, 0x62, 0xd0, 0xc6, 0x8c, 0xc4, 0xbd, 0x6e, 0xd7, 0x47, 0x1d,
+	0xb2, 0x2e, 0x8a, 0x87, 0xc3, 0xea, 0xe2, 0x29, 0x7c, 0x81, 0x65, 0x01, 0x76, 0x88, 0x14, 0xa1,
+	0x18, 0xa0, 0x6f, 0x02, 0xe0, 0xf8, 0x5e, 0x93, 0x8a, 0xc0, 0x8d, 0xde, 0xf6, 0xad, 0x4c, 0x9a,
+	0xa0, 0xb0, 0xc3, 0xac, 0xfd, 0xc9, 0x48, 0x9e, 0x66, 0x28, 0x29, 0x31, 0x94, 0xa1, 0xd9, 0x4b,
+	0x3b, 0x07, 0x46, 0x6e, 0xf7, 0xc0, 0xc8, 0xed, 0x1d, 0x18, 0xb9, 0xaf, 0x91, 0xa1, 0xed, 0x44,
+	0x86, 0xb6, 0x1b, 0x19, 0xda, 0x5e, 0x64, 0x68, 0xfb, 0x91, 0xa1, 0x7d, 0xff, 0x63, 0xe4, 0x36,
+	0xf3, 0xfd, 0xda, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc2, 0xd8, 0x72, 0x54, 0xcb, 0x07, 0x00,
+	0x00,
 }
 
 func (m *Project) Marshal() (dAtA []byte, err error) {
@@ -271,6 +344,58 @@ func (m *Project) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *ProjectLimitBySelector) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ProjectLimitBySelector) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ProjectLimitBySelector) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.MaxProjects != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.MaxProjects))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Selector) > 0 {
+		keysForSelector := make([]string, 0, len(m.Selector))
+		for k := range m.Selector {
+			keysForSelector = append(keysForSelector, string(k))
+		}
+		github_com_gogo_protobuf_sortkeys.Strings(keysForSelector)
+		for iNdEx := len(keysForSelector) - 1; iNdEx >= 0; iNdEx-- {
+			v := m.Selector[string(keysForSelector[iNdEx])]
+			baseI := i
+			i -= len(v)
+			copy(dAtA[i:], v)
+			i = encodeVarintGenerated(dAtA, i, uint64(len(v)))
+			i--
+			dAtA[i] = 0x12
+			i -= len(keysForSelector[iNdEx])
+			copy(dAtA[i:], keysForSelector[iNdEx])
+			i = encodeVarintGenerated(dAtA, i, uint64(len(keysForSelector[iNdEx])))
+			i--
+			dAtA[i] = 0xa
+			i = encodeVarintGenerated(dAtA, i, uint64(baseI-i))
+			i--
+			dAtA[i] = 0xa
+		}
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -351,6 +476,63 @@ func (m *ProjectRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i = encodeVarintGenerated(dAtA, i, uint64(len(m.DisplayName)))
 	i--
 	dAtA[i] = 0x12
+	{
+		size, err := m.ObjectMeta.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintGenerated(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *ProjectRequestLimit) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ProjectRequestLimit) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ProjectRequestLimit) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.MaxProjectsForServiceAccounts != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.MaxProjectsForServiceAccounts))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.MaxProjectsForSystemUsers != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.MaxProjectsForSystemUsers))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.Limits) > 0 {
+		for iNdEx := len(m.Limits) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Limits[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenerated(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
 	{
 		size, err := m.ObjectMeta.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -464,6 +646,26 @@ func (m *Project) Size() (n int) {
 	return n
 }
 
+func (m *ProjectLimitBySelector) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Selector) > 0 {
+		for k, v := range m.Selector {
+			_ = k
+			_ = v
+			mapEntrySize := 1 + len(k) + sovGenerated(uint64(len(k))) + 1 + len(v) + sovGenerated(uint64(len(v)))
+			n += mapEntrySize + 1 + sovGenerated(uint64(mapEntrySize))
+		}
+	}
+	if m.MaxProjects != nil {
+		n += 1 + sovGenerated(uint64(*m.MaxProjects))
+	}
+	return n
+}
+
 func (m *ProjectList) Size() (n int) {
 	if m == nil {
 		return 0
@@ -493,6 +695,29 @@ func (m *ProjectRequest) Size() (n int) {
 	n += 1 + l + sovGenerated(uint64(l))
 	l = len(m.Description)
 	n += 1 + l + sovGenerated(uint64(l))
+	return n
+}
+
+func (m *ProjectRequestLimit) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.ObjectMeta.Size()
+	n += 1 + l + sovGenerated(uint64(l))
+	if len(m.Limits) > 0 {
+		for _, e := range m.Limits {
+			l = e.Size()
+			n += 1 + l + sovGenerated(uint64(l))
+		}
+	}
+	if m.MaxProjectsForSystemUsers != nil {
+		n += 1 + sovGenerated(uint64(*m.MaxProjectsForSystemUsers))
+	}
+	if m.MaxProjectsForServiceAccounts != nil {
+		n += 1 + sovGenerated(uint64(*m.MaxProjectsForServiceAccounts))
+	}
 	return n
 }
 
@@ -546,6 +771,27 @@ func (this *Project) String() string {
 	}, "")
 	return s
 }
+func (this *ProjectLimitBySelector) String() string {
+	if this == nil {
+		return "nil"
+	}
+	keysForSelector := make([]string, 0, len(this.Selector))
+	for k := range this.Selector {
+		keysForSelector = append(keysForSelector, k)
+	}
+	github_com_gogo_protobuf_sortkeys.Strings(keysForSelector)
+	mapStringForSelector := "map[string]string{"
+	for _, k := range keysForSelector {
+		mapStringForSelector += fmt.Sprintf("%v: %v,", k, this.Selector[k])
+	}
+	mapStringForSelector += "}"
+	s := strings.Join([]string{`&ProjectLimitBySelector{`,
+		`Selector:` + mapStringForSelector + `,`,
+		`MaxProjects:` + valueToStringGenerated(this.MaxProjects) + `,`,
+		`}`,
+	}, "")
+	return s
+}
 func (this *ProjectList) String() string {
 	if this == nil {
 		return "nil"
@@ -570,6 +816,24 @@ func (this *ProjectRequest) String() string {
 		`ObjectMeta:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.ObjectMeta), "ObjectMeta", "v1.ObjectMeta", 1), `&`, ``, 1) + `,`,
 		`DisplayName:` + fmt.Sprintf("%v", this.DisplayName) + `,`,
 		`Description:` + fmt.Sprintf("%v", this.Description) + `,`,
+		`}`,
+	}, "")
+	return s
+}
+func (this *ProjectRequestLimit) String() string {
+	if this == nil {
+		return "nil"
+	}
+	repeatedStringForLimits := "[]ProjectLimitBySelector{"
+	for _, f := range this.Limits {
+		repeatedStringForLimits += strings.Replace(strings.Replace(f.String(), "ProjectLimitBySelector", "ProjectLimitBySelector", 1), `&`, ``, 1) + ","
+	}
+	repeatedStringForLimits += "}"
+	s := strings.Join([]string{`&ProjectRequestLimit{`,
+		`ObjectMeta:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.ObjectMeta), "ObjectMeta", "v1.ObjectMeta", 1), `&`, ``, 1) + `,`,
+		`Limits:` + repeatedStringForLimits + `,`,
+		`MaxProjectsForSystemUsers:` + valueToStringGenerated(this.MaxProjectsForSystemUsers) + `,`,
+		`MaxProjectsForServiceAccounts:` + valueToStringGenerated(this.MaxProjectsForServiceAccounts) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -736,6 +1000,203 @@ func (m *Project) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipGenerated(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ProjectLimitBySelector) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowGenerated
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ProjectLimitBySelector: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ProjectLimitBySelector: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Selector", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Selector == nil {
+				m.Selector = make(map[string]string)
+			}
+			var mapkey string
+			var mapvalue string
+			for iNdEx < postIndex {
+				entryPreIndex := iNdEx
+				var wire uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowGenerated
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					wire |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				fieldNum := int32(wire >> 3)
+				if fieldNum == 1 {
+					var stringLenmapkey uint64
+					for shift := uint(0); ; shift += 7 {
+						if shift >= 64 {
+							return ErrIntOverflowGenerated
+						}
+						if iNdEx >= l {
+							return io.ErrUnexpectedEOF
+						}
+						b := dAtA[iNdEx]
+						iNdEx++
+						stringLenmapkey |= uint64(b&0x7F) << shift
+						if b < 0x80 {
+							break
+						}
+					}
+					intStringLenmapkey := int(stringLenmapkey)
+					if intStringLenmapkey < 0 {
+						return ErrInvalidLengthGenerated
+					}
+					postStringIndexmapkey := iNdEx + intStringLenmapkey
+					if postStringIndexmapkey < 0 {
+						return ErrInvalidLengthGenerated
+					}
+					if postStringIndexmapkey > l {
+						return io.ErrUnexpectedEOF
+					}
+					mapkey = string(dAtA[iNdEx:postStringIndexmapkey])
+					iNdEx = postStringIndexmapkey
+				} else if fieldNum == 2 {
+					var stringLenmapvalue uint64
+					for shift := uint(0); ; shift += 7 {
+						if shift >= 64 {
+							return ErrIntOverflowGenerated
+						}
+						if iNdEx >= l {
+							return io.ErrUnexpectedEOF
+						}
+						b := dAtA[iNdEx]
+						iNdEx++
+						stringLenmapvalue |= uint64(b&0x7F) << shift
+						if b < 0x80 {
+							break
+						}
+					}
+					intStringLenmapvalue := int(stringLenmapvalue)
+					if intStringLenmapvalue < 0 {
+						return ErrInvalidLengthGenerated
+					}
+					postStringIndexmapvalue := iNdEx + intStringLenmapvalue
+					if postStringIndexmapvalue < 0 {
+						return ErrInvalidLengthGenerated
+					}
+					if postStringIndexmapvalue > l {
+						return io.ErrUnexpectedEOF
+					}
+					mapvalue = string(dAtA[iNdEx:postStringIndexmapvalue])
+					iNdEx = postStringIndexmapvalue
+				} else {
+					iNdEx = entryPreIndex
+					skippy, err := skipGenerated(dAtA[iNdEx:])
+					if err != nil {
+						return err
+					}
+					if (skippy < 0) || (iNdEx+skippy) < 0 {
+						return ErrInvalidLengthGenerated
+					}
+					if (iNdEx + skippy) > postIndex {
+						return io.ErrUnexpectedEOF
+					}
+					iNdEx += skippy
+				}
+			}
+			m.Selector[mapkey] = mapvalue
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxProjects", wireType)
+			}
+			var v int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.MaxProjects = &v
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenerated(dAtA[iNdEx:])
@@ -1000,6 +1461,163 @@ func (m *ProjectRequest) Unmarshal(dAtA []byte) error {
 			}
 			m.Description = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipGenerated(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ProjectRequestLimit) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowGenerated
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ProjectRequestLimit: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ProjectRequestLimit: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ObjectMeta", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.ObjectMeta.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Limits", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenerated
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Limits = append(m.Limits, ProjectLimitBySelector{})
+			if err := m.Limits[len(m.Limits)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxProjectsForSystemUsers", wireType)
+			}
+			var v int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.MaxProjectsForSystemUsers = &v
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxProjectsForServiceAccounts", wireType)
+			}
+			var v int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.MaxProjectsForServiceAccounts = &v
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenerated(dAtA[iNdEx:])

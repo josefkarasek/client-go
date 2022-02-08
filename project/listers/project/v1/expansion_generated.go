@@ -5,3 +5,7 @@ package v1
 // ProjectListerExpansion allows custom methods to be added to
 // ProjectLister.
 type ProjectListerExpansion interface{}
+
+// ProjectRequestLimitListerExpansion allows custom methods to be added to
+// ProjectRequestLimitLister.
+type ProjectRequestLimitListerExpansion interface{}

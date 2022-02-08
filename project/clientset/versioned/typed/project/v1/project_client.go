@@ -14,6 +14,7 @@ type ProjectV1Interface interface {
 	RESTClient() rest.Interface
 	ProjectsGetter
 	ProjectRequestsGetter
+	ProjectRequestLimitsGetter
 }
 
 // ProjectV1Client is used to interact with features provided by the project.openshift.io group.
@@ -27,6 +28,10 @@ func (c *ProjectV1Client) Projects() ProjectInterface {
 
 func (c *ProjectV1Client) ProjectRequests() ProjectRequestInterface {
 	return newProjectRequests(c)
+}
+
+func (c *ProjectV1Client) ProjectRequestLimits() ProjectRequestLimitInterface {
+	return newProjectRequestLimits(c)
 }
 
 // NewForConfig creates a new ProjectV1Client for the given config.

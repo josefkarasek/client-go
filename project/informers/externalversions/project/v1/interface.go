@@ -10,6 +10,8 @@ import (
 type Interface interface {
 	// Projects returns a ProjectInformer.
 	Projects() ProjectInformer
+	// ProjectRequestLimits returns a ProjectRequestLimitInformer.
+	ProjectRequestLimits() ProjectRequestLimitInformer
 }
 
 type version struct {
@@ -26,4 +28,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Projects returns a ProjectInformer.
 func (v *version) Projects() ProjectInformer {
 	return &projectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// ProjectRequestLimits returns a ProjectRequestLimitInformer.
+func (v *version) ProjectRequestLimits() ProjectRequestLimitInformer {
+	return &projectRequestLimitInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

@@ -39,6 +39,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=project.openshift.io, Version=v1
 	case v1.SchemeGroupVersion.WithResource("projects"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Project().V1().Projects().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("projectrequestlimits"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Project().V1().ProjectRequestLimits().Informer()}, nil
 
 	}
 

@@ -50,7 +50,7 @@ func (in *ProjectLimitBySelector) DeepCopyInto(out *ProjectLimitBySelector) {
 	}
 	if in.MaxProjects != nil {
 		in, out := &in.MaxProjects, &out.MaxProjects
-		*out = new(int)
+		*out = new(int64)
 		**out = **in
 	}
 	return
@@ -139,12 +139,12 @@ func (in *ProjectRequestLimit) DeepCopyInto(out *ProjectRequestLimit) {
 	}
 	if in.MaxProjectsForSystemUsers != nil {
 		in, out := &in.MaxProjectsForSystemUsers, &out.MaxProjectsForSystemUsers
-		*out = new(int)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxProjectsForServiceAccounts != nil {
 		in, out := &in.MaxProjectsForServiceAccounts, &out.MaxProjectsForServiceAccounts
-		*out = new(int)
+		*out = new(int64)
 		**out = **in
 	}
 	return

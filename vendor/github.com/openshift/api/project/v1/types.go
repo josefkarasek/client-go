@@ -119,12 +119,12 @@ type ProjectRequestLimit struct {
 
 	// MaxProjectsForSystemUsers controls how many projects a certificate user may have.  Certificate
 	// users do not have any labels associated with them for more fine grained control
-	MaxProjectsForSystemUsers *int `json:"maxProjectsForSystemUsers,omitempty" protobuf:"bytes,3,opt,name=maxProjectsForSystemUsers"`
+	MaxProjectsForSystemUsers *int64 `json:"maxProjectsForSystemUsers,omitempty" protobuf:"bytes,3,opt,name=maxProjectsForSystemUsers"`
 
 	// MaxProjectsForServiceAccounts controls how many projects a service account may have.  Service
 	// accounts can't create projects by default, but if they are allowed to create projects, you cannot
 	// trust any labels placed on them since project editors can manipulate those labels
-	MaxProjectsForServiceAccounts *int `json:"maxProjectsForServiceAccounts,omitempty" protobuf:"bytes,4,opt,name=maxProjectsForServiceAccounts"`
+	MaxProjectsForServiceAccounts *int64 `json:"maxProjectsForServiceAccounts,omitempty" protobuf:"bytes,4,opt,name=maxProjectsForServiceAccounts"`
 }
 
 // ProjectLimitBySelector specifies the maximum number of projects allowed for a given user label selector
@@ -136,5 +136,5 @@ type ProjectLimitBySelector struct {
 	// there is no limit to the number of projects users can request. An unlimited number of projects
 	// is useful in the case a limit is specified as the default for all users and only users with a
 	// specific set of labels should be allowed unlimited project creation.
-	MaxProjects *int `json:"maxProjects,omitempty" protobuf:"bytes,2,opt,name=maxProjects"`
+	MaxProjects *int64 `json:"maxProjects,omitempty" protobuf:"bytes,2,opt,name=maxProjects"`
 }

@@ -21,6 +21,16 @@ func (Project) SwaggerDoc() map[string]string {
 	return map_Project
 }
 
+var map_ProjectLimitBySelector = map[string]string{
+	"":            "ProjectLimitBySelector specifies the maximum number of projects allowed for a given user label selector",
+	"selector":    "Selector is a user label selector. An empty selector selects everything.",
+	"maxProjects": "MaxProjects is the number of projects allowed for this class of users. If MaxProjects is nil, there is no limit to the number of projects users can request. An unlimited number of projects is useful in the case a limit is specified as the default for all users and only users with a specific set of labels should be allowed unlimited project creation.",
+}
+
+func (ProjectLimitBySelector) SwaggerDoc() map[string]string {
+	return map_ProjectLimitBySelector
+}
+
 var map_ProjectList = map[string]string{
 	"":      "ProjectList is a list of Project objects.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"items": "Items is the list of projects",
@@ -38,6 +48,16 @@ var map_ProjectRequest = map[string]string{
 
 func (ProjectRequest) SwaggerDoc() map[string]string {
 	return map_ProjectRequest
+}
+
+var map_ProjectRequestLimit = map[string]string{
+	"":                              "ProjectRequestLimit is the configuration for the project request limit plug-in It contains an ordered list of limits based on user label selectors. Selectors will be checked in order and the first one that applies will be used as the limit.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"maxProjectsForSystemUsers":     "MaxProjectsForSystemUsers controls how many projects a certificate user may have.  Certificate users do not have any labels associated with them for more fine grained control",
+	"maxProjectsForServiceAccounts": "MaxProjectsForServiceAccounts controls how many projects a service account may have.  Service accounts can't create projects by default, but if they are allowed to create projects, you cannot trust any labels placed on them since project editors can manipulate those labels",
+}
+
+func (ProjectRequestLimit) SwaggerDoc() map[string]string {
+	return map_ProjectRequestLimit
 }
 
 var map_ProjectSpec = map[string]string{

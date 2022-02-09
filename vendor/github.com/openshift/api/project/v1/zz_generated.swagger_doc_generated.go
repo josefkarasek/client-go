@@ -60,6 +60,15 @@ func (ProjectRequestLimit) SwaggerDoc() map[string]string {
 	return map_ProjectRequestLimit
 }
 
+var map_ProjectRequestLimitList = map[string]string{
+	"":      "ProjectRequestLimitList is a list of ProjectRequestLimit objects.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"items": "Items is the list of projectrequestlimits",
+}
+
+func (ProjectRequestLimitList) SwaggerDoc() map[string]string {
+	return map_ProjectRequestLimitList
+}
+
 var map_ProjectSpec = map[string]string{
 	"":           "ProjectSpec describes the attributes on a Project",
 	"finalizers": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage",

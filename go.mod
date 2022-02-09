@@ -11,4 +11,4 @@ require (
 	k8s.io/code-generator v0.23.0
 )
 
-replace github.com/openshift/api => github.com/josefkarasek/api-1 v0.0.0-20220209155803-0e2e10500661
+replace github.com/openshift/api => github.com/josefkarasek/api-1 v0.0.0-20220209161218-70db28bc583f

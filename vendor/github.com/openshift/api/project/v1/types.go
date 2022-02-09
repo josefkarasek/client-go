@@ -101,6 +101,20 @@ type ProjectRequest struct {
 	Description string `json:"description,omitempty" protobuf:"bytes,3,opt,name=description"`
 }
 
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// ProjectRequestLimitList is a list of ProjectRequestLimit objects.
+//
+// Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).
+// +openshift:compatibility-gen:level=1
+type ProjectRequestLimitList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+
+	// Items is the list of projectrequestlimits
+	Items []ProjectRequestLimit `json:"items" protobuf:"bytes,2,rep,name=items"`
+}
+
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
